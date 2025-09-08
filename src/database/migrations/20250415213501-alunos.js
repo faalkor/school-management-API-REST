@@ -1,7 +1,7 @@
 /** @type {import('sequelize-cli').Migration} */
-module.exports = {
+export default {
   async up(queryInterface, Sequelize) {
-    queryInterface.createTable('alunos', {
+    await queryInterface.createTable('alunos', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -19,9 +19,10 @@ module.exports = {
       email: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
-      dataNascimento: {
-        type: Sequelize.DATE,
+      data_nascimento: {
+        type: Sequelize.DATEONLY,
         allowNull: false,
       },
       created_at: {

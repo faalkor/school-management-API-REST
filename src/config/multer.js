@@ -9,6 +9,8 @@ const __dirname = dirname(__filename);
 
 export default {
   fileFilter: (req, file, cb) => {
+    if (!file) return cb(new multer.MulterError('Photo error'))
+
     if (file.mimetype != 'image/png' && file.mimetype != 'image/jpeg') {
       return cb(new multer.MulterError('Photo type must be PNG or JPEG'));
     }

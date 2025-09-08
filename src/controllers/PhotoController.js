@@ -15,6 +15,12 @@ class PhotoController {
         });
       }
       try {
+        if (!req.file) {
+          return res.status(400).json({
+          errors: ['No file upload'],
+        });
+        }
+
         const { originalname: original_name, filename } = req.file;
         const { aluno_id } = req.body;
         const alunoExists = await Aluno.alunoExists(aluno_id);
